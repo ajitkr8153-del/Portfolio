@@ -1,8 +1,8 @@
 export const portfolioData = {
   personal: {
     name: "Ajit Kumar",
-    role: "B.Tech CSE Student",
-    college: "SVIET, Chandigarh",
+    role: "B.Tech CSE Student | Aspiring Software Engineer",
+    college: "Swami Vivekanand Institute of Engineering & Technology (SVIET), Chandigarh",
     location: "Chandigarh, India",
     email: "ajitkr8153@gmail.com",
     phone: "+91 8539876974",
@@ -10,36 +10,46 @@ export const portfolioData = {
     github: "https://github.com/ajitkr8153-del",
     linkedin: "https://linkedin.com/in/ajitkumar-dev",
     resumeUrl: "#resume",
-    availability: "Open to Internships & Opportunities",
-    tagline: "B.Tech CSE Student passionate about software development and technology.",
-    shortBio: "I am a B.Tech Computer Science Engineering student passionate about software development, problem solving, and building impactful technology solutions."
+    availability: "Open to Internships & Collaboration",
+    tagline: "B.Tech CSE Student | Aspiring Software Engineer passionate about building impactful technology.",
+    shortBio: "I am a Computer Science Engineering student with a strong interest in software development, problem-solving, and emerging technologies. I enjoy turning ideas into practical projects while continuously improving my technical and creative skills."
   },
 
   about: {
     story: [
-      "I am a B.Tech Computer Science Engineering student passionate about software development and technology."
+      "I am a Computer Science Engineering student with a strong interest in software development, problem-solving, and emerging technologies. I enjoy turning ideas into practical projects while continuously improving my technical and creative skills."
     ],
     details: {
       studying: "B.Tech in Computer Science & Engineering",
-      college: "SVIET, Chandigarh",
-      interests: ["Software Development", "Web Development", "Problem Solving"],
-      learning: ["Data Structures & Algorithms", "Web Development", "Git & GitHub"],
-      careerGoals: "To become a skilled software engineer and build impactful technology solutions."
+      college: "Swami Vivekanand Institute of Engineering & Technology (SVIET), Chandigarh",
+      interests: [
+        "Software Development",
+        "Web Development",
+        "Data Structures & Algorithms",
+        "UI/UX Design"
+      ],
+      learning: [
+        "Advanced C++",
+        "Data Structures & Algorithms",
+        "Web Technologies",
+        "Git & GitHub"
+      ],
+      careerGoals: "To become a skilled Software Engineer and contribute to innovative, scalable, and impactful technology solutions."
     },
     highlights: [
       {
         title: "Programming & Problem Solving",
-        description: "Focusing on C++, C, Python, and Data Structures & Algorithms.",
+        description: "Strong focus on C++, C, Python and algorithmic thinking through Data Structures & Algorithms.",
         icon: "Brain"
       },
       {
         title: "Web Development",
-        description: "Building responsive web interfaces with HTML, CSS, and JavaScript.",
+        description: "Building responsive web interfaces with HTML5, CSS3, JavaScript and modern web technologies.",
         icon: "Globe"
       },
       {
-        title: "Version Control & Tooling",
-        description: "Proficient in Git, GitHub workflows, and VS Code development environment.",
+        title: "Design & Tooling",
+        description: "UI/UX design with Figma & Canva, version control with Git & GitHub, and VS Code workflows.",
         icon: "GitBranch"
       }
     ]
@@ -57,16 +67,20 @@ export const portfolioData = {
       { name: "C++", category: "languages", level: "Proficient", icon: "Cpu", highlight: true },
       { name: "C", category: "languages", level: "Proficient", icon: "Code", highlight: true },
       { name: "Python", category: "languages", level: "Intermediate", icon: "Terminal", highlight: true },
+      { name: "JavaScript", category: "languages", level: "Intermediate", icon: "FileCode", highlight: true },
 
       // Frontend
-      { name: "HTML", category: "frontend", level: "Proficient", icon: "Layout", highlight: true },
-      { name: "CSS", category: "frontend", level: "Proficient", icon: "Sparkles", highlight: true },
+      { name: "HTML5", category: "frontend", level: "Proficient", icon: "Layout", highlight: true },
+      { name: "CSS3", category: "frontend", level: "Proficient", icon: "Sparkles", highlight: true },
       { name: "JavaScript", category: "frontend", level: "Intermediate", icon: "FileCode", highlight: true },
+      { name: "Responsive Web Design", category: "frontend", level: "Intermediate", icon: "Monitor", highlight: true },
 
       // Tools
       { name: "Git", category: "tools", level: "Proficient", icon: "GitBranch", highlight: true },
       { name: "GitHub", category: "tools", level: "Proficient", icon: "Github", highlight: true },
-      { name: "VS Code", category: "tools", level: "Proficient", icon: "Monitor", highlight: true }
+      { name: "VS Code", category: "tools", level: "Proficient", icon: "Monitor", highlight: true },
+      { name: "Canva", category: "tools", level: "Intermediate", icon: "Sparkles", highlight: true },
+      { name: "Figma", category: "tools", level: "Beginner", icon: "Layout", highlight: false }
     ]
   },
 
@@ -74,17 +88,18 @@ export const portfolioData = {
     {
       id: "project-1",
       title: "Project Name",
-      subtitle: "Software & Web Development Project",
-      description: "Short description of your project.",
-      techStack: ["C++", "Programming"],
+      subtitle: "Real-World Problem Solver",
+      description: "A practical project focused on solving a real-world problem through clean, efficient, and user-friendly technology.",
+      techStack: ["C++", "JavaScript", "HTML", "CSS"],
       category: "Software",
       featured: true,
-      githubUrl: "https://github.com/ajitkr8153-del/Portfolio",
-      liveUrl: "https://github.com/ajitkr8153-del/Portfolio",
+      githubUrl: "https://github.com/ajitkr8153-del",
+      liveUrl: "https://github.com/ajitkr8153-del",
       highlights: [
-        "Built with clean programming architecture",
-        "Version controlled with Git & GitHub",
-        "Problem-solving and algorithmic approach"
+        "Clean and efficient code architecture",
+        "User-friendly interface and experience",
+        "Real-world problem-solving approach",
+        "Version controlled with Git & GitHub"
       ],
       previewGradient: "from-indigo-600 via-purple-600 to-cyan-500"
     }
@@ -92,36 +107,43 @@ export const portfolioData = {
 
   education: [
     {
-      degree: "B.Tech in Computer Science & Engineering",
-      institution: "SVIET, Chandigarh",
+      degree: "Bachelor of Technology (B.Tech) – Computer Science & Engineering",
+      institution: "Swami Vivekanand Institute of Engineering & Technology (SVIET), Chandigarh",
       duration: "Expected Graduation: 2028",
       graduationYear: "2028",
       location: "Chandigarh, India",
-      description: "Undergraduate degree program focusing on Computer Science fundamentals, Software Development, Data Structures & Algorithms, and Web Development."
+      description: "Undergraduate degree program focusing on Computer Science fundamentals, Software Development, Data Structures & Algorithms, Web Development, and emerging technologies."
     }
   ],
 
   achievements: [
     {
-      title: "Add your certifications",
-      organization: "Certifications",
+      title: "Technical Certifications",
+      organization: "Online Platforms",
       date: "Ongoing",
-      description: "Relevant industry or academic certifications in programming and web technologies.",
+      description: "Earning certifications in programming, web development, and software engineering from recognized platforms.",
       badge: "Certification"
     },
     {
-      title: "Add your achievements",
-      organization: "Academic & Tech",
+      title: "Coding & Development Projects",
+      organization: "Personal & Academic",
       date: "Ongoing",
-      description: "Key milestones, hackathons, and technical project accomplishments.",
-      badge: "Achievement"
+      description: "Building practical projects applying programming, web development, and problem-solving skills.",
+      badge: "Projects"
     },
     {
-      title: "Add coding certificates",
-      organization: "Coding Platforms",
+      title: "Participation in Technical Events",
+      organization: "SVIET & External",
       date: "Ongoing",
-      description: "Problem solving and coding certifications earned across recognized platforms.",
-      badge: "Coding Certificate"
+      description: "Active participation in hackathons, coding competitions, and technical workshops.",
+      badge: "Events"
+    },
+    {
+      title: "Academic & Extracurricular Achievements",
+      organization: "SVIET, Chandigarh",
+      date: "Ongoing",
+      description: "Academic excellence and active involvement in extracurricular and co-curricular activities.",
+      badge: "Academic"
     }
   ],
 
