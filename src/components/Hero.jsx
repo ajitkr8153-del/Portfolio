@@ -13,8 +13,7 @@ import {
   Code2,
   Terminal,
   Cpu,
-  Languages,
-  ExternalLink
+  GraduationCap
 } from 'lucide-react';
 
 export default function Hero({ onOpenResume, onCopyEmail }) {
@@ -71,23 +70,15 @@ export default function Hero({ onOpenResume, onCopyEmail }) {
               {personal.shortBio}
             </p>
 
-            {/* Spoken Languages & Contact Badges */}
+            {/* College & Location Badges */}
             <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 pt-1">
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60">
-                <Languages className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-                <span>Languages: <strong>{personal.spokenLanguages.join(', ')}</strong></span>
+                <GraduationCap className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+                <span>{personal.college}</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60">
-                <Phone className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                <a href={`tel:${personal.phone}`} className="hover:text-emerald-500 font-medium">
-                  {personal.phone}
-                </a>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60">
-                <Mail className="w-3.5 h-3.5 text-rose-500 shrink-0" />
-                <a href={`mailto:${personal.email}`} className="hover:text-rose-500 font-medium">
-                  {personal.email}
-                </a>
+                <MapPin className="w-3.5 h-3.5 text-rose-500 shrink-0" />
+                <span>{personal.location}</span>
               </div>
             </div>
 
@@ -107,7 +98,7 @@ export default function Hero({ onOpenResume, onCopyEmail }) {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm glass-card border border-slate-300 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-400 text-slate-800 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 transition-all active:scale-95"
               >
                 <FileText className="w-4 h-4" />
-                <span>View Resume</span>
+                <span>Download Resume</span>
               </button>
 
               <a
@@ -136,19 +127,21 @@ export default function Hero({ onOpenResume, onCopyEmail }) {
               </a>
 
               <a
+                href={personal.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="p-2.5 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 hover:border-blue-500/50 hover:shadow-glow-sm transition-all"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+
+              <a
                 href={`mailto:${personal.email}`}
                 aria-label="Send Email"
                 className="p-2.5 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-rose-500 dark:hover:text-rose-400 hover:border-rose-500/50 hover:shadow-glow-sm transition-all"
               >
                 <Mail className="w-4 h-4" />
-              </a>
-
-              <a
-                href={`tel:${personal.phone}`}
-                aria-label="Call Phone"
-                className="p-2.5 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/50 hover:shadow-glow-sm transition-all"
-              >
-                <Phone className="w-4 h-4" />
               </a>
             </div>
 
@@ -164,7 +157,7 @@ export default function Hero({ onOpenResume, onCopyEmail }) {
               {/* Card Container */}
               <div className="w-full glass-card border border-slate-200 dark:border-slate-800/80 rounded-3xl overflow-hidden shadow-2xl bg-white/90 dark:bg-slate-900/90 p-6 flex flex-col items-center text-center space-y-5">
                 
-                {/* User Image with Gradient Ring */}
+                {/* User Image */}
                 <div className="relative">
                   <div className="w-40 h-40 sm:w-44 sm:h-44 rounded-2xl p-[3px] bg-gradient-to-tr from-indigo-500 via-purple-500 to-cyan-400 shadow-xl">
                     <img 
@@ -178,7 +171,7 @@ export default function Hero({ onOpenResume, onCopyEmail }) {
                   </div>
                   <div className="absolute -bottom-2 -right-2 px-3 py-1 rounded-full bg-slate-900 text-white text-[11px] font-bold border-2 border-brand-500 flex items-center gap-1 shadow-md">
                     <Sparkles className="w-3 h-3 text-amber-400" />
-                    <span>C++ & Web</span>
+                    <span>CSE 2028</span>
                   </div>
                 </div>
 
@@ -190,41 +183,31 @@ export default function Hero({ onOpenResume, onCopyEmail }) {
                   <p className="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">
                     {personal.role}
                   </p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    {personal.college}
+                  </p>
                 </div>
 
-                {/* Core Expertise Tags */}
+                {/* Core Skills Tags */}
                 <div className="flex flex-wrap justify-center gap-1.5 pt-1">
                   <span className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/40">
                     C++
                   </span>
+                  <span className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/40">
+                    C
+                  </span>
                   <span className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40">
-                    JavaScript
+                    Python
                   </span>
                   <span className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-cyan-50 dark:bg-cyan-950/50 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/40">
                     HTML & CSS
                   </span>
                   <span className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800/40">
-                    DSA
+                    JavaScript
                   </span>
                   <span className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40">
                     Git & GitHub
                   </span>
-                </div>
-
-                {/* Mini Stats Bar */}
-                <div className="w-full pt-4 border-t border-slate-200 dark:border-slate-800 grid grid-cols-3 gap-2">
-                  <div className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800/60">
-                    <div className="text-base font-bold text-brand-600 dark:text-brand-400">400+</div>
-                    <div className="text-[10px] text-slate-500 uppercase font-medium">DSA Solved</div>
-                  </div>
-                  <div className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800/60">
-                    <div className="text-base font-bold text-cyan-600 dark:text-cyan-400">15+</div>
-                    <div className="text-[10px] text-slate-500 uppercase font-medium">Projects</div>
-                  </div>
-                  <div className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800/60">
-                    <div className="text-base font-bold text-purple-600 dark:text-purple-400">100%</div>
-                    <div className="text-[10px] text-slate-500 uppercase font-medium">Responsive</div>
-                  </div>
                 </div>
 
               </div>

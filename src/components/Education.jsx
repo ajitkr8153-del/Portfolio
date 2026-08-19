@@ -5,7 +5,6 @@ import {
   Calendar, 
   MapPin, 
   Award, 
-  BookOpen, 
   CheckCircle2 
 } from 'lucide-react';
 
@@ -29,20 +28,20 @@ export default function Education() {
             Education & <span className="text-gradient">Qualifications</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl">
-            My formal academic training providing strong theoretical grounding in computing systems and software design.
+            My ongoing engineering education building fundamental problem-solving and software engineering capabilities.
           </p>
         </div>
 
         {/* Education Timeline */}
         <div className="max-w-4xl mx-auto space-y-8 relative">
           
-          {/* Vertical Connecting Line */}
+          {/* Vertical Line */}
           <div className="absolute top-4 bottom-4 left-4 sm:left-8 w-0.5 bg-gradient-to-b from-indigo-500 via-purple-500 to-transparent -z-0"></div>
 
           {education.map((item, idx) => (
             <div key={idx} className="relative flex items-start gap-4 sm:gap-8 group">
               
-              {/* Timeline Marker Icon */}
+              {/* Timeline Marker */}
               <div className="w-8 h-8 sm:w-16 sm:h-16 rounded-2xl bg-white dark:bg-slate-900 border-2 border-brand-500 text-brand-600 dark:text-brand-400 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all shrink-0 z-10">
                 <GraduationCap className="w-4 h-4 sm:w-7 sm:h-7" />
               </div>
@@ -62,10 +61,10 @@ export default function Education() {
                   <div className="flex flex-wrap items-center gap-2 sm:flex-col sm:items-end">
                     <span className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 dark:text-slate-400">
                       <Calendar className="w-3.5 h-3.5" />
-                      <span>{item.duration}</span>
+                      <span>Graduation: {item.graduationYear || item.duration}</span>
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                      {item.score}
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                      Batch 2028
                     </span>
                   </div>
                 </div>
@@ -74,23 +73,10 @@ export default function Education() {
                   {item.description}
                 </p>
 
-                {/* Academic Highlights */}
-                {item.achievements && item.achievements.length > 0 && (
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 space-y-2">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                      <Award className="w-3.5 h-3.5 text-amber-500" />
-                      <span>Key Highlights & Roles</span>
-                    </h4>
-                    <ul className="space-y-1.5">
-                      {item.achievements.map((ach, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-                          <CheckCircle2 className="w-4 h-4 text-brand-500 shrink-0 mt-0.5" />
-                          <span>{ach}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+                  <MapPin className="w-3.5 h-3.5 text-rose-500" />
+                  <span>{item.location}</span>
+                </div>
 
               </div>
 

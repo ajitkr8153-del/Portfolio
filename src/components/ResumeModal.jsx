@@ -14,7 +14,6 @@ import {
   GraduationCap, 
   Award, 
   Sparkles,
-  Languages,
   CheckCircle2
 } from 'lucide-react';
 
@@ -33,7 +32,7 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
         className="glass-card w-full max-w-4xl rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white relative my-auto max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Modal Top Action Bar */}
+        {/* Modal Action Bar */}
         <div className="px-6 py-4 bg-slate-100 dark:bg-slate-800/90 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-brand-500" />
@@ -53,11 +52,11 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
             </button>
 
             <a
-              href={`mailto:${personal.email}?subject=Opportunity%20Discussion`}
+              href={`mailto:${personal.email}?subject=Internship%20Opportunity`}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-sm hover:brightness-110 transition-all"
             >
               <Mail className="w-3.5 h-3.5" />
-              <span>Hire Me</span>
+              <span>Contact</span>
             </a>
 
             <button
@@ -70,7 +69,7 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
           </div>
         </div>
 
-        {/* Resume Sheet Content */}
+        {/* Resume Content */}
         <div className="p-6 sm:p-10 overflow-y-auto space-y-8 bg-white dark:bg-[#0b1120] text-slate-800 dark:text-slate-200 font-sans print:p-0 print:bg-white print:text-black">
           
           {/* Header */}
@@ -79,17 +78,13 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
               {personal.name}
             </h2>
             <p className="text-base font-semibold text-brand-600 dark:text-brand-400 mb-3">
-              {personal.role}
+              {personal.role} • {personal.college}
             </p>
 
             <div className="flex flex-wrap gap-4 text-xs text-slate-600 dark:text-slate-400">
               <span className="flex items-center gap-1">
                 <MapPin className="w-3.5 h-3.5 text-rose-500" /> {personal.location}
               </span>
-              <span>•</span>
-              <a href={`tel:${personal.phone}`} className="flex items-center gap-1 hover:text-emerald-500">
-                <Phone className="w-3.5 h-3.5 text-emerald-500" /> {personal.phone}
-              </a>
               <span>•</span>
               <button 
                 onClick={() => onCopyEmail(personal.email)}
@@ -102,42 +97,20 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
                 <Github className="w-3.5 h-3.5" /> GitHub
               </a>
               <span>•</span>
-              <span className="flex items-center gap-1">
-                <Languages className="w-3.5 h-3.5 text-indigo-500" /> {personal.spokenLanguages.join(', ')}
-              </span>
+              <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-500">
+                <Linkedin className="w-3.5 h-3.5" /> LinkedIn
+              </a>
             </div>
           </div>
 
           {/* Summary */}
           <div>
             <h3 className="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-2">
-              Professional Summary
+              Summary
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              {personal.shortBio} {about.details.careerGoals}
+              {about.story[0]} {about.details.careerGoals}
             </p>
-          </div>
-
-          {/* Technical Skills & Expertise */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-2.5 flex items-center gap-1.5">
-              <Briefcase className="w-4 h-4" />
-              <span>Skills & Expertise</span>
-            </h3>
-            <div className="space-y-1.5 text-xs sm:text-sm">
-              <div>
-                <span className="font-bold text-slate-900 dark:text-white">Programming & Core: </span>
-                <span className="text-slate-600 dark:text-slate-300">C++, Data Structures & Algorithms, Problem Solving, JavaScript</span>
-              </div>
-              <div>
-                <span className="font-bold text-slate-900 dark:text-white">Web & UI/UX: </span>
-                <span className="text-slate-600 dark:text-slate-300">HTML & CSS, Web Development, UI/UX & Graphic Design, React.js, Tailwind CSS</span>
-              </div>
-              <div>
-                <span className="font-bold text-slate-900 dark:text-white">Tools & Version Control: </span>
-                <span className="text-slate-600 dark:text-slate-300">Git & GitHub, Software Development Lifecycle, VS Code</span>
-              </div>
-            </div>
           </div>
 
           {/* Education */}
@@ -151,14 +124,36 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
                 <div key={idx} className="space-y-1">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm">
                     <span className="font-bold text-slate-900 dark:text-white">{edu.degree}</span>
-                    <span className="font-mono text-slate-500 dark:text-slate-400">{edu.duration}</span>
+                    <span className="font-mono text-slate-500 dark:text-slate-400">Graduation: {edu.graduationYear}</span>
                   </div>
                   <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
                     <span>{edu.institution}</span>
-                    <span className="font-semibold text-emerald-600 dark:text-emerald-400">{edu.score}</span>
+                    <span className="font-semibold text-brand-600 dark:text-brand-400">{edu.location}</span>
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Technical Skills */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-2.5 flex items-center gap-1.5">
+              <Briefcase className="w-4 h-4" />
+              <span>Skills</span>
+            </h3>
+            <div className="space-y-1.5 text-xs sm:text-sm">
+              <div>
+                <span className="font-bold text-slate-900 dark:text-white">Languages: </span>
+                <span className="text-slate-600 dark:text-slate-300">C++, C, Python</span>
+              </div>
+              <div>
+                <span className="font-bold text-slate-900 dark:text-white">Frontend: </span>
+                <span className="text-slate-600 dark:text-slate-300">HTML, CSS, JavaScript</span>
+              </div>
+              <div>
+                <span className="font-bold text-slate-900 dark:text-white">Tools: </span>
+                <span className="text-slate-600 dark:text-slate-300">Git, GitHub, VS Code</span>
+              </div>
             </div>
           </div>
 
@@ -166,10 +161,10 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
           <div>
             <h3 className="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-3 flex items-center gap-1.5">
               <Award className="w-4 h-4" />
-              <span>Selected Projects</span>
+              <span>Projects</span>
             </h3>
             <div className="space-y-4">
-              {projects.slice(0, 3).map((proj, idx) => (
+              {projects.map((proj, idx) => (
                 <div key={idx} className="space-y-1">
                   <div className="flex items-center justify-between text-xs sm:text-sm">
                     <span className="font-bold text-slate-900 dark:text-white">{proj.title}</span>
@@ -183,17 +178,17 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
             </div>
           </div>
 
-          {/* Honors & Certifications */}
+          {/* Achievements */}
           <div>
             <h3 className="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-2 flex items-center gap-1.5">
               <Sparkles className="w-4 h-4" />
-              <span>Honors & Milestones</span>
+              <span>Achievements & Certifications</span>
             </h3>
             <ul className="space-y-1">
               {achievements.map((ach, idx) => (
                 <li key={idx} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-brand-500 shrink-0" />
-                  <span><strong>{ach.title}</strong> – {ach.organization} ({ach.date})</span>
+                  <span>{ach.title}</span>
                 </li>
               ))}
             </ul>
