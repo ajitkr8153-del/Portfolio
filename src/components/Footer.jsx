@@ -5,7 +5,7 @@ import {
   Github, 
   Linkedin, 
   Mail, 
-  Heart, 
+  Phone,
   Code2 
 } from 'lucide-react';
 
@@ -73,19 +73,18 @@ export default function Footer({ onCopyEmail }) {
             </a>
 
             <a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn Profile"
-              className="p-2 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 hover:border-blue-500/40 transition-all"
+              href={`tel:${personal.phone}`}
+              aria-label="Call Phone"
+              className="p-2 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/40 transition-all"
+              title={`Call: ${personal.phone}`}
             >
-              <Linkedin className="w-4 h-4" />
+              <Phone className="w-4 h-4" />
             </a>
 
             <button
               onClick={() => onCopyEmail(personal.email)}
               aria-label="Copy Email"
-              className="p-2 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/40 transition-all"
+              className="p-2 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-rose-500 dark:hover:text-rose-400 hover:border-rose-500/40 transition-all"
               title="Copy Email"
             >
               <Mail className="w-4 h-4" />

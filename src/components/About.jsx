@@ -4,20 +4,24 @@ import {
   User, 
   GraduationCap, 
   Code2, 
+  Globe, 
   Palette, 
-  Zap, 
   Brain, 
+  GitBranch, 
+  Zap, 
   Target, 
-  Layers, 
+  Languages, 
   BookOpen, 
   CheckCircle2 
 } from 'lucide-react';
 
 const iconMap = {
   Code2: Code2,
+  Globe: Globe,
+  Brain: Brain,
   Palette: Palette,
-  Zap: Zap,
-  Brain: Brain
+  GitBranch: GitBranch,
+  Zap: Zap
 };
 
 export default function About() {
@@ -37,10 +41,10 @@ export default function About() {
             <span>About Me</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Transforming Ideas Into <span className="text-gradient">Fluid Experiences</span>
+            Engineering Code & <span className="text-gradient">Designing Interfaces</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl">
-            A closer look at my background, what drives my passion for development, and the goals shaping my engineering journey.
+            Passionate programmer focused on software development, algorithmic problem solving in C++, and responsive web engineering.
           </p>
         </div>
 
@@ -52,7 +56,7 @@ export default function About() {
             <div className="glass-card rounded-2xl p-6 sm:p-8 space-y-4 border border-slate-200 dark:border-slate-800/80">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-brand-500"></span>
-                <span>My Journey & Philosophy</span>
+                <span>Background & Technical Focus</span>
               </h3>
               
               <div className="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -67,7 +71,7 @@ export default function About() {
                   📍 {personal.location}
                 </span>
                 <span className="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/50">
-                  🎓 {personal.college}
+                  🗣️ Spoken: {personal.spokenLanguages.join(', ')}
                 </span>
                 <span className="px-3 py-1 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                   ⚡ {personal.availability}
@@ -76,61 +80,24 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right Column: Structured Key Points (Studying, Interests, Learning, Goals) */}
+          {/* Right Column: Structured Key Points */}
           <div className="lg:col-span-5 space-y-4">
             
-            {/* Education & Study Focus Card */}
+            {/* Core Expertise Areas */}
             <div className="glass-card rounded-xl p-5 border border-slate-200 dark:border-slate-800/80">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
-                  <GraduationCap className="w-4 h-4" />
+                  <Code2 className="w-4 h-4" />
                 </div>
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
-                  Academic Degree
-                </h4>
-              </div>
-              <p className="text-sm text-slate-700 dark:text-slate-300 font-medium pl-9">
-                {about.details.studying}
-              </p>
-            </div>
-
-            {/* Technical Interests */}
-            <div className="glass-card rounded-xl p-5 border border-slate-200 dark:border-slate-800/80">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
-                  <Layers className="w-4 h-4" />
-                </div>
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
-                  Technical Interests
+                  Core Expertise Areas
                 </h4>
               </div>
               <div className="flex flex-wrap gap-1.5 pl-9">
-                {about.details.interests.map((interest, idx) => (
+                {about.details.interests.map((item, idx) => (
                   <span 
                     key={idx}
-                    className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-cyan-50 dark:bg-cyan-950/40 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/50"
-                  >
-                    {interest}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Currently Learning */}
-            <div className="glass-card rounded-xl p-5 border border-slate-200 dark:border-slate-800/80">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400">
-                  <BookOpen className="w-4 h-4" />
-                </div>
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
-                  Currently Exploring
-                </h4>
-              </div>
-              <div className="flex flex-wrap gap-1.5 pl-9">
-                {about.details.learning.map((item, idx) => (
-                  <span 
-                    key={idx}
-                    className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800/50"
+                    className="px-2.5 py-1 rounded-md text-xs font-medium bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/50"
                   >
                     {item}
                   </span>
@@ -138,10 +105,47 @@ export default function About() {
               </div>
             </div>
 
-            {/* Career Goals */}
+            {/* Languages Spoken Card */}
             <div className="glass-card rounded-xl p-5 border border-slate-200 dark:border-slate-800/80">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                  <Languages className="w-4 h-4" />
+                </div>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                  Spoken Languages
+                </h4>
+              </div>
+              <div className="flex flex-wrap gap-2 pl-9">
+                {personal.spokenLanguages.map((lang, idx) => (
+                  <span 
+                    key={idx}
+                    className="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50"
+                  >
+                    {lang}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Academic Field */}
+            <div className="glass-card rounded-xl p-5 border border-slate-200 dark:border-slate-800/80">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                  <GraduationCap className="w-4 h-4" />
+                </div>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                  Discipline
+                </h4>
+              </div>
+              <p className="text-sm text-slate-700 dark:text-slate-300 font-medium pl-9">
+                {about.details.studying}
+              </p>
+            </div>
+
+            {/* Career Ambition */}
+            <div className="glass-card rounded-xl p-5 border border-slate-200 dark:border-slate-800/80">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400">
                   <Target className="w-4 h-4" />
                 </div>
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
@@ -156,27 +160,34 @@ export default function About() {
           </div>
         </div>
 
-        {/* Highlights 4-Grid Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {about.highlights.map((item, idx) => {
-            const IconComponent = iconMap[item.icon] || Code2;
-            return (
-              <div 
-                key={idx}
-                className="glass-card glass-card-hover rounded-xl p-5 border border-slate-200 dark:border-slate-800/80 group"
-              >
-                <div className="w-10 h-10 rounded-lg bg-brand-500/10 dark:bg-brand-500/20 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all">
-                  <IconComponent className="w-5 h-5" />
+        {/* 5-Area Expertise Grid */}
+        <div className="mb-6">
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 text-center">
+            Key Focus Pillars
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {about.expertise.map((item, idx) => {
+              const IconComponent = iconMap[item.icon] || Code2;
+              return (
+                <div 
+                  key={idx}
+                  className="glass-card glass-card-hover rounded-xl p-5 border border-slate-200 dark:border-slate-800/80 group flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="w-10 h-10 rounded-lg bg-brand-500/10 dark:bg-brand-500/20 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all">
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                    <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-1.5">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <h4 className="text-base font-bold text-slate-900 dark:text-white mb-1.5">
-                  {item.title}
-                </h4>
-                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
       </div>

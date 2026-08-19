@@ -6,6 +6,7 @@ import {
   Printer, 
   ExternalLink, 
   Mail, 
+  Phone,
   Github, 
   Linkedin, 
   MapPin, 
@@ -13,6 +14,7 @@ import {
   GraduationCap, 
   Award, 
   Sparkles,
+  Languages,
   CheckCircle2
 } from 'lucide-react';
 
@@ -54,7 +56,7 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
               href={`mailto:${personal.email}?subject=Opportunity%20Discussion`}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-sm hover:brightness-110 transition-all"
             >
-              <Download className="w-3.5 h-3.5" />
+              <Mail className="w-3.5 h-3.5" />
               <span>Hire Me</span>
             </a>
 
@@ -85,6 +87,10 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
                 <MapPin className="w-3.5 h-3.5 text-rose-500" /> {personal.location}
               </span>
               <span>•</span>
+              <a href={`tel:${personal.phone}`} className="flex items-center gap-1 hover:text-emerald-500">
+                <Phone className="w-3.5 h-3.5 text-emerald-500" /> {personal.phone}
+              </a>
+              <span>•</span>
               <button 
                 onClick={() => onCopyEmail(personal.email)}
                 className="flex items-center gap-1 hover:text-brand-500 text-left"
@@ -96,9 +102,9 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
                 <Github className="w-3.5 h-3.5" /> GitHub
               </a>
               <span>•</span>
-              <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-500">
-                <Linkedin className="w-3.5 h-3.5" /> LinkedIn
-              </a>
+              <span className="flex items-center gap-1">
+                <Languages className="w-3.5 h-3.5 text-indigo-500" /> {personal.spokenLanguages.join(', ')}
+              </span>
             </div>
           </div>
 
@@ -110,6 +116,28 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {personal.shortBio} {about.details.careerGoals}
             </p>
+          </div>
+
+          {/* Technical Skills & Expertise */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-2.5 flex items-center gap-1.5">
+              <Briefcase className="w-4 h-4" />
+              <span>Skills & Expertise</span>
+            </h3>
+            <div className="space-y-1.5 text-xs sm:text-sm">
+              <div>
+                <span className="font-bold text-slate-900 dark:text-white">Programming & Core: </span>
+                <span className="text-slate-600 dark:text-slate-300">C++, Data Structures & Algorithms, Problem Solving, JavaScript</span>
+              </div>
+              <div>
+                <span className="font-bold text-slate-900 dark:text-white">Web & UI/UX: </span>
+                <span className="text-slate-600 dark:text-slate-300">HTML & CSS, Web Development, UI/UX & Graphic Design, React.js, Tailwind CSS</span>
+              </div>
+              <div>
+                <span className="font-bold text-slate-900 dark:text-white">Tools & Version Control: </span>
+                <span className="text-slate-600 dark:text-slate-300">Git & GitHub, Software Development Lifecycle, VS Code</span>
+              </div>
+            </div>
           </div>
 
           {/* Education */}
@@ -134,28 +162,6 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
             </div>
           </div>
 
-          {/* Technical Skills */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-2.5 flex items-center gap-1.5">
-              <Briefcase className="w-4 h-4" />
-              <span>Technical Skills</span>
-            </h3>
-            <div className="space-y-1.5 text-xs sm:text-sm">
-              <div>
-                <span className="font-bold text-slate-900 dark:text-white">Languages: </span>
-                <span className="text-slate-600 dark:text-slate-300">JavaScript (ES6+), TypeScript, Python, Java, C++, HTML5, CSS3</span>
-              </div>
-              <div>
-                <span className="font-bold text-slate-900 dark:text-white">Frontend Frameworks: </span>
-                <span className="text-slate-600 dark:text-slate-300">React.js, Tailwind CSS, Next.js, Redux Toolkit, Context API, Vite</span>
-              </div>
-              <div>
-                <span className="font-bold text-slate-900 dark:text-white">Tools & Practices: </span>
-                <span className="text-slate-600 dark:text-slate-300">Git, GitHub, Figma, VS Code, Postman, Responsive UI, Agile</span>
-              </div>
-            </div>
-          </div>
-
           {/* Key Projects */}
           <div>
             <h3 className="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-3 flex items-center gap-1.5">
@@ -167,7 +173,7 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
                 <div key={idx} className="space-y-1">
                   <div className="flex items-center justify-between text-xs sm:text-sm">
                     <span className="font-bold text-slate-900 dark:text-white">{proj.title}</span>
-                    <span className="text-[11px] font-mono text-slate-400">{proj.techStack.slice(0, 3).join(', ')}</span>
+                    <span className="text-[11px] font-mono text-slate-400">{proj.techStack.join(', ')}</span>
                   </div>
                   <p className="text-xs text-slate-600 dark:text-slate-300">
                     {proj.description}
@@ -181,7 +187,7 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
           <div>
             <h3 className="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400 mb-2 flex items-center gap-1.5">
               <Sparkles className="w-4 h-4" />
-              <span>Honors & Certifications</span>
+              <span>Honors & Milestones</span>
             </h3>
             <ul className="space-y-1">
               {achievements.map((ach, idx) => (

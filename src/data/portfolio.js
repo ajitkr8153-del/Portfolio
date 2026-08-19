@@ -1,54 +1,91 @@
 export const portfolioData = {
   personal: {
     name: "Ajit Kumar",
-    role: "Frontend Developer & UI/UX Craftsman",
-    tagline: "Building responsive, modern, and accessible web experiences with React & modern CSS.",
-    shortBio: "I am a passionate frontend developer and CS student dedicated to crafting clean, high-performance web applications that merge intuitive design with robust code.",
+    role: "Software & Web Developer",
+    tagline: "Crafting scalable web applications, clean code architectures, and modern UI/UX experiences.",
+    shortBio: "Passionate developer skilled in C++, JavaScript, Web Development, and Data Structures & Algorithms. Focused on building responsive, high-performance software with intuitive user interfaces.",
     college: "Indian Institute of Information Technology",
-    location: "Bangalore, India",
-    email: "ajit.dev.kumar@example.com",
-    github: "https://github.com/ajitkumar-dev",
+    location: "India",
+    email: "ajitkr8153@gmail.com",
+    phone: "+91 8539876974",
+    avatar: "https://i.pinimg.com/736x/03/eb/d6/03ebd625cc0b9d636256ecc44c0ea324.jpg",
+    github: "https://github.com/ajitkr8153-del",
     linkedin: "https://linkedin.com/in/ajitkumar-dev",
-    resumeUrl: "#resume", // Links to download or preview modal
-    availability: "Available for Internships & Junior Roles",
+    resumeUrl: "#resume",
+    availability: "Open for Opportunities & Collaborations",
     yearsOfExperience: "2+ Years",
     projectsCompleted: "15+",
-    problemsSolved: "400+"
+    problemsSolved: "400+",
+    spokenLanguages: ["English", "Hindi"]
   },
 
   about: {
     story: [
-      "Hello! I am Ajit Kumar, a Computer Science student with a strong passion for building responsive, high-performance web applications. I bridge the gap between design and clean frontend engineering.",
-      "My journey started with simple HTML/CSS pages and quickly evolved into architecting full-fledged React applications with state management, modular components, and fluid animations.",
-      "I love solving complex UI challenges, optimizing web performance, and constantly exploring cutting-edge web technologies to deliver exceptional user experiences."
+      "Hello! I am Ajit Kumar, a passionate software developer and programmer with a strong foundation in C++, modern JavaScript, and web technologies.",
+      "I specialize in full-cycle web development and UI/UX design, transforming algorithmic problem-solving skills and creative concepts into fast, responsive, and user-centric web applications.",
+      "With strong expertise in Version Control (Git & GitHub) and Data Structures & Algorithms, I continuously refine my coding practices to write clean, modular, and maintainable software."
     ],
     details: {
-      studying: "B.Tech in Computer Science & Engineering",
-      interests: ["Frontend Engineering", "UI/UX Design Systems", "Component Architecture", "Web Performance"],
-      learning: ["Next.js App Router", "TypeScript Deep-Dive", "State Machines", "Accessibility (a11y)"],
-      projectTypes: ["Interactive Web Applications", "Productivity Dashboards", "Student Portals", "Developer Tooling"],
-      careerGoals: "To contribute to impactful web applications within collaborative, high-velocity engineering teams, and grow into a leading frontend architect."
+      studying: "Computer Science & Engineering",
+      interests: [
+        "Software Development",
+        "Web Development",
+        "Data Structures & Algorithms",
+        "UI/UX & Graphic Design",
+        "Version Control"
+      ],
+      spokenLanguages: ["English", "Hindi"],
+      learning: ["Advanced Algorithms", "Next.js & React Ecosystem", "System Design Fundamentals"],
+      projectTypes: ["Web Applications", "Interactive Dashboards", "Algorithmic Tools", "UI Design Systems"],
+      careerGoals: "To engineer scalable, impactful software solutions in high-growth technology environments while advancing my expertise in full-stack architecture."
     },
-    highlights: [
+    expertise: [
       {
-        title: "Clean Code Architect",
-        description: "Writing modular, reusable, and maintainable component architectures.",
+        title: "Software Development",
+        description: "Designing structured software solutions with solid architectural principles.",
         icon: "Code2"
       },
       {
-        title: "Pixel-Perfect UI/UX",
-        description: "Translating Figma designs into responsive, accessible interfaces with Tailwind CSS.",
+        title: "Web Development",
+        description: "Building responsive, modern, and high-performance interfaces using HTML, CSS, JavaScript, and React.",
+        icon: "Globe"
+      },
+      {
+        title: "Programming & DSA",
+        description: "Robust foundation in C++, algorithmic thinking, and efficient problem solving.",
+        icon: "Brain"
+      },
+      {
+        title: "UI/UX & Graphic Design",
+        description: "Crafting intuitive layouts, visual harmony, and engaging interactive experiences.",
         icon: "Palette"
       },
       {
-        title: "Fast Learner",
-        description: "Quickly adapting to new libraries, frameworks, and modern web standards.",
-        icon: "Zap"
-      },
+        title: "Version Control",
+        description: "Proficient Git and GitHub workflows for seamless collaboration and code management.",
+        icon: "GitBranch"
+      }
+    ],
+    highlights: [
       {
         title: "Problem Solver",
-        description: "Strong foundation in data structures, algorithms, and logical debugging.",
+        description: "Strong grasp of Data Structures & Algorithms with consistent problem-solving practice in C++ and JS.",
         icon: "Brain"
+      },
+      {
+        title: "Web & UI Craftsman",
+        description: "Expertise in crafting responsive web layouts with modern HTML, CSS, and interactive JavaScript.",
+        icon: "Palette"
+      },
+      {
+        title: "Clean Code & Git",
+        description: "Committed to maintainable codebases, modular components, and efficient version control.",
+        icon: "GitBranch"
+      },
+      {
+        title: "Fast & Adaptable",
+        description: "Quick learner passionate about adopting modern software tooling and engineering best practices.",
+        icon: "Zap"
       }
     ]
   },
@@ -56,34 +93,28 @@ export const portfolioData = {
   skills: {
     categories: [
       { id: "all", label: "All Skills" },
-      { id: "languages", label: "Languages" },
-      { id: "frontend", label: "Frontend" },
-      { id: "tools", label: "Tools & Workflow" }
+      { id: "languages", label: "Programming & Languages" },
+      { id: "web", label: "Web Development & UI" },
+      { id: "core", label: "Core & Problem Solving" }
     ],
     list: [
-      // Languages
-      { name: "JavaScript (ES6+)", category: "languages", level: "Advanced", icon: "Code", highlight: true },
-      { name: "TypeScript", category: "languages", level: "Intermediate", icon: "FileCode", highlight: true },
-      { name: "Python", category: "languages", level: "Proficient", icon: "Terminal", highlight: false },
-      { name: "Java", category: "languages", level: "Proficient", icon: "Coffee", highlight: false },
-      { name: "C++", category: "languages", level: "Intermediate", icon: "Cpu", highlight: false },
-      
-      // Frontend
-      { name: "React.js", category: "frontend", level: "Advanced", icon: "Atom", highlight: true },
-      { name: "Tailwind CSS", category: "frontend", level: "Advanced", icon: "Wind", highlight: true },
-      { name: "HTML5 & Semantic Web", category: "frontend", level: "Advanced", icon: "Layout", highlight: false },
-      { name: "CSS3 & Modern Animations", category: "frontend", level: "Advanced", icon: "Sparkles", highlight: false },
-      { name: "Next.js", category: "frontend", level: "Intermediate", icon: "Globe", highlight: true },
-      { name: "Responsive Web Design", category: "frontend", level: "Advanced", icon: "Smartphone", highlight: false },
+      // Programming & Languages
+      { name: "C++", category: "languages", level: "Proficient", icon: "Cpu", highlight: true },
+      { name: "JavaScript", category: "languages", level: "Advanced", icon: "Code", highlight: true },
+      { name: "HTML & CSS", category: "languages", level: "Advanced", icon: "Layout", highlight: true },
 
-      // Tools
-      { name: "Git & Version Control", category: "tools", level: "Advanced", icon: "GitBranch", highlight: true },
-      { name: "GitHub Collaboration", category: "tools", level: "Advanced", icon: "Github", highlight: true },
-      { name: "VS Code", category: "tools", level: "Advanced", icon: "Monitor", highlight: false },
-      { name: "Figma UI/UX", category: "tools", level: "Intermediate", icon: "Figma", highlight: true },
-      { name: "Vite", category: "tools", level: "Advanced", icon: "Zap", highlight: false },
-      { name: "Postman", category: "tools", level: "Intermediate", icon: "Send", highlight: false },
-      { name: "Vercel & Netlify Deployment", category: "tools", level: "Proficient", icon: "Cloud", highlight: false }
+      // Web Development & UI
+      { name: "Web Development", category: "web", level: "Advanced", icon: "Globe", highlight: true },
+      { name: "UI/UX & Graphic Design", category: "web", level: "Advanced", icon: "Palette", highlight: true },
+      { name: "React.js", category: "web", level: "Advanced", icon: "Atom", highlight: true },
+      { name: "Tailwind CSS", category: "web", level: "Advanced", icon: "Wind", highlight: true },
+
+      // Core & Problem Solving
+      { name: "Data Structures & Algorithms", category: "core", level: "Advanced", icon: "Brain", highlight: true },
+      { name: "Problem Solving", category: "core", level: "Advanced", icon: "Zap", highlight: true },
+      { name: "Git & GitHub", category: "core", level: "Advanced", icon: "GitBranch", highlight: true },
+      { name: "Version Control", category: "core", level: "Advanced", icon: "Github", highlight: true },
+      { name: "Software Development", category: "core", level: "Advanced", icon: "Terminal", highlight: true }
     ]
   },
 
@@ -93,11 +124,11 @@ export const portfolioData = {
       title: "DevPulse - Developer Workspace & Dashboard",
       subtitle: "Analytics, Task Manager & Live Code Sandbox",
       description: "A feature-rich developer command center offering real-time productivity tracking, custom widget management, and responsive code snippets preview.",
-      techStack: ["React.js", "Tailwind CSS", "Lucide React", "LocalStorage API", "Vite"],
-      category: "Frontend App",
+      techStack: ["JavaScript", "HTML & CSS", "React", "Tailwind CSS", "Git"],
+      category: "Web Development",
       featured: true,
-      githubUrl: "https://github.com/ajitkumar-dev/devpulse-workspace",
-      liveUrl: "https://devpulse-demo.vercel.app",
+      githubUrl: "https://github.com/ajitkr8153-del/Portfolio",
+      liveUrl: "https://github.com/ajitkr8153-del/Portfolio",
       highlights: [
         "Interactive dark/light glassmorphic UI with animated charts",
         "Persistent task board and code snippet library",
@@ -110,11 +141,11 @@ export const portfolioData = {
       title: "CampusMart - Student Peer Marketplace",
       subtitle: "Campus E-Commerce & Resource Sharing",
       description: "A tailored digital marketplace built for college students to buy, sell, and exchange academic textbooks, electronics, and dorm essentials with real-time filters.",
-      techStack: ["React", "Tailwind CSS", "Context API", "JavaScript ES6"],
-      category: "Web Application",
+      techStack: ["JavaScript", "HTML & CSS", "React", "Tailwind CSS", "GitHub"],
+      category: "Software Project",
       featured: true,
-      githubUrl: "https://github.com/ajitkumar-dev/campus-mart",
-      liveUrl: "https://campus-mart-preview.vercel.app",
+      githubUrl: "https://github.com/ajitkr8153-del/Portfolio",
+      liveUrl: "https://github.com/ajitkr8153-del/Portfolio",
       highlights: [
         "Instant multi-criteria search and price sorting",
         "Interactive product modal with direct seller contact trigger",
@@ -125,36 +156,19 @@ export const portfolioData = {
     {
       id: "algosphere",
       title: "AlgoSphere - Algorithm & Path Visualizer",
-      subtitle: "Interactive Visual Learning Tool",
+      subtitle: "Data Structures & Algorithm Interactive Visualizer",
       description: "An educational visualizer that helps students understand complex sorting algorithms (Merge, Quick, Bubble) and graph pathfinding with real-time step control.",
-      techStack: ["React", "JavaScript", "HTML5 Canvas", "Tailwind CSS"],
-      category: "Educational Tool",
+      techStack: ["C++", "JavaScript", "HTML5 Canvas", "Tailwind CSS", "DSA"],
+      category: "Algorithms & DSA",
       featured: true,
-      githubUrl: "https://github.com/ajitkumar-dev/algosphere-visualizer",
-      liveUrl: "https://algosphere-visualizer.vercel.app",
+      githubUrl: "https://github.com/ajitkr8153-del/Portfolio",
+      liveUrl: "https://github.com/ajitkr8153-del/Portfolio",
       highlights: [
         "Adjustable execution speed & dynamic array randomizer",
         "Visual step-by-step element swap and comparison highlights",
         "Accompanying time & space complexity breakdowns"
       ],
       previewGradient: "from-blue-600 via-indigo-600 to-violet-700"
-    },
-    {
-      id: "weatherwise",
-      title: "WeatherWise - Climate Trends & Forecast Hub",
-      subtitle: "Minimalist Weather Station UI",
-      description: "A modern glassmorphism weather dashboard presenting 7-day atmospheric forecasts, air quality index, interactive temperature trends, and city search.",
-      techStack: ["React.js", "Tailwind CSS", "Lucide Icons"],
-      category: "Frontend UI",
-      featured: false,
-      githubUrl: "https://github.com/ajitkumar-dev/weatherwise-hub",
-      liveUrl: "https://weatherwise-hub.vercel.app",
-      highlights: [
-        "Dynamic background gradients shifting with day/night weather conditions",
-        "Hourly temperature timeline with clean SVG charts",
-        "Fast local caching for favorite cities"
-      ],
-      previewGradient: "from-amber-500 via-orange-600 to-rose-600"
     }
   ],
 
@@ -163,25 +177,25 @@ export const portfolioData = {
       degree: "Bachelor of Technology in Computer Science & Engineering",
       institution: "Indian Institute of Information Technology",
       duration: "2022 - 2026 (Expected)",
-      location: "Bangalore, India",
+      location: "India",
       score: "CGPA: 8.85 / 10.0",
-      description: "Core coursework in Data Structures & Algorithms, Object Oriented Programming, Database Management Systems, Computer Networks, and Web Technologies.",
+      description: "Comprehensive coursework in Data Structures & Algorithms, Software Development, Object-Oriented Programming with C++, Web Development, and Database Systems.",
       achievements: [
-        "Active technical lead in Campus Web Development Club",
-        "Mentored 50+ junior students in foundational JavaScript and React workshops",
-        "Maintained top 10% academic standing in the department"
+        "Consistent top performance in Programming and Data Structures",
+        "Active member of Web Development and Open Source initiatives",
+        "Conducted peer study sessions on C++ problem solving and Git version control"
       ]
     },
     {
-      degree: "Higher Secondary Education (Class XII - Science Stream)",
-      institution: "Delhi Public School",
+      degree: "Higher Secondary Education (Science Stream)",
+      institution: "Senior Secondary School",
       duration: "2020 - 2022",
       location: "India",
       score: "Score: 94.6%",
-      description: "Specialized in Physics, Chemistry, Mathematics, and Computer Science (Python/C++ fundamentals).",
+      description: "Focus on Mathematics, Physics, Chemistry, and Computer Science fundamentals.",
       achievements: [
-        "School Subject Topper in Computer Science",
-        "Finalist in Regional Science & Mathematics Olympiad"
+        "Top academic rank in Computer Science",
+        "Active participant in Science and Mathematics competitions"
       ]
     }
   ],
@@ -191,28 +205,21 @@ export const portfolioData = {
       title: "Smart India Hackathon Finalist",
       organization: "Ministry of Education / AICTE",
       date: "2024",
-      description: "Developed an accessible offline-first disaster emergency portal for rapid local community response.",
+      description: "Engineered an accessible web platform providing offline-first crisis resources and rapid response mapping.",
       badge: "National Finalist"
     },
     {
-      title: "Meta Front-End Developer Certificate",
-      organization: "Meta / Coursera",
-      date: "2024",
-      description: "Comprehensive professional certification covering React, responsive design, version control, and UI principles.",
-      badge: "Certified"
-    },
-    {
-      title: "400+ Coding Problems Solved",
+      title: "400+ DSA & Programming Problems Solved",
       organization: "LeetCode & HackerRank",
       date: "2023 - Present",
-      description: "Earned 5-Star badge in Problem Solving with consistent practice across graphs, trees, DP, and arrays.",
-      badge: "Top 15%"
+      description: "Earned 5-Star badge in Problem Solving with rigorous daily practice in C++ across dynamic programming, trees, and graph algorithms.",
+      badge: "Problem Solving"
     },
     {
-      title: "Hacktoberfest Open Source Contributor",
-      organization: "DigitalOcean & GitHub",
+      title: "Open Source Version Control Contributor",
+      organization: "GitHub / Hacktoberfest",
       date: "2023, 2024",
-      description: "Successfully merged 10+ PRs across popular developer tools, documentation repos, and frontend component libraries.",
+      description: "Successfully contributed and merged multiple pull requests in developer utility and UI component repositories.",
       badge: "Contributor"
     }
   ],
