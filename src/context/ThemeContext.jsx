@@ -7,21 +7,27 @@ const ThemeContext = createContext({
 
 export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('portfolio-theme');
-    if (saved !== null) {
-      return saved === 'dark';
+    // SSR-safe: don't access window during server-side render
+    if (typeof window === 'undefined') return true;
+    try {
+      const saved = localStorage.getItem('portfolio-theme');
+      if (saved !== null) {
+        return saved === 'dark';
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch {
+      return true;
     }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
   useEffect(() => {
     const root = document.documentElement;
     if (isDark) {
       root.classList.add('dark');
-      localStorage.setItem('portfolio-theme', 'dark');
+      try { localStorage.setItem('portfolio-theme', 'dark'); } catch {}
     } else {
       root.classList.remove('dark');
-      localStorage.setItem('portfolio-theme', 'light');
+      try { localStorage.setItem('portfolio-theme', 'light'); } catch {}
     }
   }, [isDark]);
 
