@@ -20,11 +20,19 @@ import {
 export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
   if (!isOpen) return null;
 
-  const { personal, about, skills, projects, education, achievements } = portfolioData;
+  const { personal = {}, about = {}, skills = {}, projects = [], education = [], achievements = [] } = portfolioData;
 
   const handlePrint = () => {
     window.print();
   };
+
+  const storyText = Array.isArray(about.story) 
+    ? about.story.join(' ') 
+    : typeof about.story === 'string' 
+      ? about.story 
+      : 'B.Tech Computer Science Engineering student passionate about software development.';
+
+  const careerGoals = about.details?.careerGoals || 'To become a skilled software engineer and build impactful technology solutions.';
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-fade-in overflow-y-auto">
@@ -52,7 +60,7 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
             </button>
 
             <a
-              href={`mailto:${personal.email}?subject=Internship%20Opportunity`}
+              href={`mailto:${personal.email || 'ajitkr8153@gmail.com'}?subject=Opportunity`}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-sm hover:brightness-110 transition-all"
             >
               <Mail className="w-3.5 h-3.5" />
@@ -75,31 +83,43 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
           {/* Header */}
           <div className="border-b border-slate-200 dark:border-slate-800 pb-6">
             <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-1">
-              {personal.name}
+              {personal.name || 'Ajit Kumar'}
             </h2>
             <p className="text-base font-semibold text-brand-600 dark:text-brand-400 mb-3">
-              {personal.role} • {personal.college}
+              {personal.role || 'B.Tech CSE Student'} • {personal.college || 'SVIET, Chandigarh'}
             </p>
 
             <div className="flex flex-wrap gap-4 text-xs text-slate-600 dark:text-slate-400">
               <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-rose-500" /> {personal.location}
+                <MapPin className="w-3.5 h-3.5 text-rose-500" /> {personal.location || 'Chandigarh, India'}
               </span>
-              <span>•</span>
-              <button 
-                onClick={() => onCopyEmail(personal.email)}
-                className="flex items-center gap-1 hover:text-brand-500 text-left"
-              >
-                <Mail className="w-3.5 h-3.5 text-brand-500" /> {personal.email}
-              </button>
-              <span>•</span>
-              <a href={personal.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-500">
-                <Github className="w-3.5 h-3.5" /> GitHub
-              </a>
-              <span>•</span>
-              <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-500">
-                <Linkedin className="w-3.5 h-3.5" /> LinkedIn
-              </a>
+              {personal.email && (
+                <>
+                  <span>•</span>
+                  <button 
+                    onClick={() => onCopyEmail(personal.email)}
+                    className="flex items-center gap-1 hover:text-brand-500 text-left"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-brand-500" /> {personal.email}
+                  </button>
+                </>
+              )}
+              {personal.github && (
+                <>
+                  <span>•</span>
+                  <a href={personal.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-500">
+                    <Github className="w-3.5 h-3.5" /> GitHub
+                  </a>
+                </>
+              )}
+              {personal.linkedin && (
+                <>
+                  <span>•</span>
+                  <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-500">
+                    <Linkedin className="w-3.5 h-3.5" /> LinkedIn
+                  </a>
+                </>
+              )}
             </div>
           </div>
 
@@ -109,7 +129,7 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
               Summary
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              {about.story[0]} {about.details.careerGoals}
+              {storyText} {careerGoals}
             </p>
           </div>
 
@@ -124,11 +144,11 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
                 <div key={idx} className="space-y-1">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm">
                     <span className="font-bold text-slate-900 dark:text-white">{edu.degree}</span>
-                    <span className="font-mono text-slate-500 dark:text-slate-400">Graduation: {edu.graduationYear}</span>
+                    <span className="font-mono text-slate-500 dark:text-slate-400">Graduation: {edu.graduationYear || edu.duration || '2028'}</span>
                   </div>
                   <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
-                    <span>{edu.institution}</span>
-                    <span className="font-semibold text-brand-600 dark:text-brand-400">{edu.location}</span>
+                    <span>{edu.institution || edu.college}</span>
+                    <span className="font-semibold text-brand-600 dark:text-brand-400">{edu.location || 'Chandigarh, India'}</span>
                   </div>
                 </div>
               ))}
@@ -164,17 +184,21 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
               <span>Projects</span>
             </h3>
             <div className="space-y-4">
-              {projects.map((proj, idx) => (
-                <div key={idx} className="space-y-1">
-                  <div className="flex items-center justify-between text-xs sm:text-sm">
-                    <span className="font-bold text-slate-900 dark:text-white">{proj.title}</span>
-                    <span className="text-[11px] font-mono text-slate-400">{proj.techStack.join(', ')}</span>
+              {projects.map((proj, idx) => {
+                const title = proj.title || proj.name || `Project ${idx + 1}`;
+                const techList = Array.isArray(proj.techStack) ? proj.techStack : Array.isArray(proj.tags) ? proj.tags : ['C++', 'Programming'];
+                return (
+                  <div key={idx} className="space-y-1">
+                    <div className="flex items-center justify-between text-xs sm:text-sm">
+                      <span className="font-bold text-slate-900 dark:text-white">{title}</span>
+                      <span className="text-[11px] font-mono text-slate-400">{techList.join(', ')}</span>
+                    </div>
+                    <p className="text-xs text-slate-600 dark:text-slate-300">
+                      {proj.description || 'Software project details.'}
+                    </p>
                   </div>
-                  <p className="text-xs text-slate-600 dark:text-slate-300">
-                    {proj.description}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -185,12 +209,15 @@ export default function ResumeModal({ isOpen, onClose, onCopyEmail }) {
               <span>Achievements & Certifications</span>
             </h3>
             <ul className="space-y-1">
-              {achievements.map((ach, idx) => (
-                <li key={idx} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-brand-500 shrink-0" />
-                  <span>{ach.title}</span>
-                </li>
-              ))}
+              {achievements.map((ach, idx) => {
+                const achTitle = typeof ach === 'object' && ach !== null ? (ach.title || ach.name) : ach;
+                return (
+                  <li key={idx} className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-brand-500 shrink-0" />
+                    <span>{achTitle}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

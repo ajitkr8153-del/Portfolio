@@ -5,12 +5,21 @@ import {
   Github, 
   Linkedin, 
   Mail, 
-  Phone,
+  Phone, 
   Code2 
 } from 'lucide-react';
 
 export default function Footer({ onCopyEmail }) {
-  const { personal, navLinks } = portfolioData;
+  const { personal = {}, navLinks = [] } = portfolioData;
+
+  const defaultNavLinks = navLinks.length > 0 ? navLinks : [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Education", href: "#education" },
+    { name: "Contact", href: "#contact" }
+  ];
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -38,17 +47,17 @@ export default function Footer({ onCopyEmail }) {
                 <Code2 className="w-4 h-4" />
               </div>
               <span className="font-extrabold text-slate-900 dark:text-white">
-                {personal.name}
+                {personal.name || 'Ajit Kumar'}
               </span>
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm">
-              {personal.tagline}
+              {personal.tagline || 'B.Tech CSE Student passionate about software development.'}
             </p>
           </div>
 
           {/* Quick Nav Links */}
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-600 dark:text-slate-400">
-            {navLinks.map((link) => (
+            {defaultNavLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
@@ -62,33 +71,39 @@ export default function Footer({ onCopyEmail }) {
 
           {/* Social Links & Back to Top */}
           <div className="flex items-center gap-3">
-            <a
-              href={personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub Profile"
-              className="p-2 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 hover:border-indigo-500/40 transition-all"
-            >
-              <Github className="w-4 h-4" />
-            </a>
+            {personal.github && (
+              <a
+                href={personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="p-2 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 hover:border-indigo-500/40 transition-all"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            )}
 
-            <a
-              href={`tel:${personal.phone}`}
-              aria-label="Call Phone"
-              className="p-2 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/40 transition-all"
-              title={`Call: ${personal.phone}`}
-            >
-              <Phone className="w-4 h-4" />
-            </a>
+            {personal.phone && (
+              <a
+                href={`tel:${personal.phone}`}
+                aria-label="Call Phone"
+                className="p-2 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 hover:border-emerald-500/40 transition-all"
+                title={`Call: ${personal.phone}`}
+              >
+                <Phone className="w-4 h-4" />
+              </a>
+            )}
 
-            <button
-              onClick={() => onCopyEmail(personal.email)}
-              aria-label="Copy Email"
-              className="p-2 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-rose-500 dark:hover:text-rose-400 hover:border-rose-500/40 transition-all"
-              title="Copy Email"
-            >
-              <Mail className="w-4 h-4" />
-            </button>
+            {personal.email && (
+              <button
+                onClick={() => onCopyEmail(personal.email)}
+                aria-label="Copy Email"
+                className="p-2 rounded-xl glass-card border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-rose-500 dark:hover:text-rose-400 hover:border-rose-500/40 transition-all"
+                title="Copy Email"
+              >
+                <Mail className="w-4 h-4" />
+              </button>
+            )}
 
             <button
               onClick={scrollToTop}
@@ -105,7 +120,7 @@ export default function Footer({ onCopyEmail }) {
         {/* Bottom Copyright & Tech Credit */}
         <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-400 gap-3 text-center sm:text-left">
           <div>
-            © {currentYear} {personal.name}. All rights reserved.
+            © {currentYear} {personal.name || 'Ajit Kumar'}. All rights reserved.
           </div>
           <div className="flex items-center gap-1.5 justify-center">
             <span>Built with</span>

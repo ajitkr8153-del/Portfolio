@@ -12,12 +12,11 @@ import {
   Sparkles, 
   MessageSquare, 
   Clock,
-  Languages,
   ArrowRight
 } from 'lucide-react';
 
 export default function Contact({ onShowToast, onCopyEmail }) {
-  const { personal } = portfolioData;
+  const { personal = {} } = portfolioData;
 
   const [formData, setFormData] = useState({
     name: '',
@@ -31,23 +30,29 @@ export default function Contact({ onShowToast, onCopyEmail }) {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
 
+  const email = personal.email || 'ajitkr8153@gmail.com';
+  const phone = personal.phone || '+91 8539876974';
+  const github = personal.github || 'https://github.com/ajitkr8153-del';
+  const linkedin = personal.linkedin || 'https://linkedin.com/in/ajitkumar-dev';
+  const availability = personal.availability || 'Open to Internships & Opportunities';
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleCopyEmail = () => {
-    onCopyEmail(personal.email);
+    onCopyEmail(email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
   const handleCopyPhone = () => {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(personal.phone);
+      navigator.clipboard.writeText(phone);
       onShowToast({
         type: 'success',
-        message: `Copied phone number ${personal.phone} to clipboard!`
+        message: `Copied phone number ${phone} to clipboard!`
       });
     }
     setCopiedPhone(true);
@@ -95,7 +100,7 @@ export default function Contact({ onShowToast, onCopyEmail }) {
             Let's Connect & <span className="text-gradient">Collaborate</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl">
-            Feel free to reach out directly via phone or email for opportunities, software projects, or inquiries.
+            Feel free to reach out directly via email or message for internships, software projects, or collaboration opportunities.
           </p>
         </div>
 
@@ -104,7 +109,7 @@ export default function Contact({ onShowToast, onCopyEmail }) {
           {/* Left Column: Direct Contact Details */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* Status & Languages Card */}
+            {/* Status Card */}
             <div className="glass-card rounded-2xl p-6 sm:p-7 border border-slate-200 dark:border-slate-800/80 space-y-4">
               <div className="flex items-center gap-3">
                 <span className="relative flex h-3 w-3">
@@ -112,48 +117,50 @@ export default function Contact({ onShowToast, onCopyEmail }) {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                 </span>
                 <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                  {personal.availability}
+                  {availability}
                 </h3>
               </div>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Open to software development roles, internships, and freelance web projects. Fluent in <strong>{personal.spokenLanguages.join(' and ')}</strong>.
+                Open to internships, junior developer roles, and student collaborations. Responses are usually within 24 hours.
               </p>
               
               <div className="pt-2 flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400">
                 <Clock className="w-4 h-4 text-brand-500" />
-                <span>Response Time: &lt; 24 Hours</span>
+                <span>Location: {personal.location || 'Chandigarh, India'}</span>
               </div>
             </div>
 
             {/* Direct Channel Cards */}
             <div className="space-y-3">
               
-              {/* Phone Card */}
-              <div className="glass-card rounded-xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800/80 flex items-center justify-between gap-4 group">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5" />
+              {/* Phone Card (if provided) */}
+              {personal.phone && (
+                <div className="glass-card rounded-xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800/80 flex items-center justify-between gap-4 group">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Phone</div>
+                      <a 
+                        href={`tel:${phone}`}
+                        className="text-sm font-semibold text-slate-900 dark:text-white hover:text-emerald-500 transition-colors"
+                      >
+                        {phone}
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Direct Phone</div>
-                    <a 
-                      href={`tel:${personal.phone}`}
-                      className="text-sm font-semibold text-slate-900 dark:text-white hover:text-emerald-500 transition-colors"
-                    >
-                      {personal.phone}
-                    </a>
-                  </div>
-                </div>
 
-                <button
-                  onClick={handleCopyPhone}
-                  className="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-all border border-slate-200 dark:border-slate-700"
-                  title="Copy Phone Number"
-                  aria-label="Copy Phone Number"
-                >
-                  {copiedPhone ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
-                </button>
-              </div>
+                  <button
+                    onClick={handleCopyPhone}
+                    className="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-all border border-slate-200 dark:border-slate-700"
+                    title="Copy Phone Number"
+                    aria-label="Copy Phone Number"
+                  >
+                    {copiedPhone ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
+                  </button>
+                </div>
+              )}
 
               {/* Email Card */}
               <div className="glass-card rounded-xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800/80 flex items-center justify-between gap-4 group">
@@ -164,10 +171,10 @@ export default function Contact({ onShowToast, onCopyEmail }) {
                   <div>
                     <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Direct Email</div>
                     <a 
-                      href={`mailto:${personal.email}`}
+                      href={`mailto:${email}`}
                       className="text-sm font-semibold text-slate-900 dark:text-white hover:text-brand-500 transition-colors"
                     >
-                      {personal.email}
+                      {email}
                     </a>
                   </div>
                 </div>
@@ -184,7 +191,7 @@ export default function Contact({ onShowToast, onCopyEmail }) {
 
               {/* GitHub Card */}
               <a
-                href={personal.github}
+                href={github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-card glass-card-hover rounded-xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800/80 flex items-center justify-between gap-4 group"
@@ -196,12 +203,35 @@ export default function Contact({ onShowToast, onCopyEmail }) {
                   <div>
                     <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">GitHub Profile</div>
                     <span className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">
-                      github.com/ajitkr8153-del
+                      {github.replace('https://', '')}
                     </span>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 group-hover:text-brand-500 transition-all" />
               </a>
+
+              {/* LinkedIn Card */}
+              {personal.linkedin && (
+                <a
+                  href={linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-card glass-card-hover rounded-xl p-4 sm:p-5 border border-slate-200 dark:border-slate-800/80 flex items-center justify-between gap-4 group"
+                >
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                      <Linkedin className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">LinkedIn Network</div>
+                      <span className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">
+                        {linkedin.replace('https://', '')}
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 group-hover:text-brand-500 transition-all" />
+                </a>
+              )}
 
             </div>
 

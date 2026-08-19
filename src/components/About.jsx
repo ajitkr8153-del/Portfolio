@@ -16,11 +16,58 @@ import {
 const iconMap = {
   Brain: Brain,
   Globe: Globe,
-  GitBranch: GitBranch
+  GitBranch: GitBranch,
+  Code2: Code2
 };
 
 export default function About() {
-  const { about, personal } = portfolioData;
+  const { about = {}, personal = {} } = portfolioData;
+
+  // Safely normalize story into an array
+  const storyParagraphs = Array.isArray(about.story)
+    ? about.story
+    : typeof about.story === 'string'
+      ? [about.story]
+      : ['I am a B.Tech Computer Science Engineering student passionate about software development and technology.'];
+
+  const details = about.details || {};
+  const studying = details.studying || 'B.Tech in Computer Science & Engineering';
+  const college = details.college || personal.college || 'SVIET, Chandigarh';
+  const careerGoals = details.careerGoals || 'To become a skilled software engineer and build impactful technology solutions.';
+
+  // Safely normalize interests into array
+  const interestsList = Array.isArray(details.interests)
+    ? details.interests
+    : typeof details.interests === 'string'
+      ? details.interests.split(',').map(s => s.trim())
+      : ['Software Development', 'Web Development', 'Problem Solving'];
+
+  // Safely normalize learning into array
+  const learningList = Array.isArray(details.learning)
+    ? details.learning
+    : typeof details.learning === 'string'
+      ? details.learning.split(',').map(s => s.trim())
+      : ['Data Structures & Algorithms', 'Web Development', 'Git & GitHub'];
+
+  const highlights = Array.isArray(about.highlights) && about.highlights.length > 0
+    ? about.highlights
+    : [
+        {
+          title: "Programming & Problem Solving",
+          description: "Focusing on C++, C, Python, and Data Structures & Algorithms.",
+          icon: "Brain"
+        },
+        {
+          title: "Web Development",
+          description: "Building responsive web interfaces with HTML, CSS, and JavaScript.",
+          icon: "Globe"
+        },
+        {
+          title: "Version Control & Tooling",
+          description: "Proficient in Git, GitHub workflows, and VS Code development environment.",
+          icon: "GitBranch"
+        }
+      ];
 
   return (
     <section id="about" className="py-24 relative overflow-hidden">
@@ -55,7 +102,7 @@ export default function About() {
               </h3>
               
               <div className="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                {about.story.map((paragraph, idx) => (
+                {storyParagraphs.map((paragraph, idx) => (
                   <p key={idx}>{paragraph}</p>
                 ))}
               </div>
@@ -63,13 +110,13 @@ export default function About() {
               {/* Quick Spec Pills */}
               <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-2">
                 <span className="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/50">
-                  📍 {personal.location}
+                  📍 {personal.location || 'India'}
                 </span>
                 <span className="px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/50">
-                  🎓 {personal.college}
+                  🎓 {personal.college || 'SVIET, Chandigarh'}
                 </span>
                 <span className="px-3 py-1 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                  ⚡ {personal.availability}
+                  ⚡ {personal.availability || 'Open for Opportunities'}
                 </span>
               </div>
             </div>
@@ -89,7 +136,7 @@ export default function About() {
                 </h4>
               </div>
               <p className="text-sm text-slate-700 dark:text-slate-300 font-medium pl-9">
-                {about.details.studying} • <span className="text-brand-600 dark:text-brand-400 font-semibold">{about.details.college}</span>
+                {studying} • <span className="text-brand-600 dark:text-brand-400 font-semibold">{college}</span>
               </p>
             </div>
 
@@ -104,7 +151,7 @@ export default function About() {
                 </h4>
               </div>
               <div className="flex flex-wrap gap-1.5 pl-9">
-                {about.details.interests.map((interest, idx) => (
+                {interestsList.map((interest, idx) => (
                   <span 
                     key={idx}
                     className="px-2.5 py-1 rounded-md text-xs font-medium bg-cyan-50 dark:bg-cyan-950/40 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/50"
@@ -126,7 +173,7 @@ export default function About() {
                 </h4>
               </div>
               <div className="flex flex-wrap gap-1.5 pl-9">
-                {about.details.learning.map((item, idx) => (
+                {learningList.map((item, idx) => (
                   <span 
                     key={idx}
                     className="px-2.5 py-1 rounded-md text-xs font-medium bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800/50"
@@ -148,16 +195,16 @@ export default function About() {
                 </h4>
               </div>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 pl-9 leading-relaxed">
-                {about.details.careerGoals}
+                {careerGoals}
               </p>
             </div>
 
           </div>
         </div>
 
-        {/* 3 Highlights */}
+        {/* Highlights */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {about.highlights.map((item, idx) => {
+          {highlights.map((item, idx) => {
             const IconComponent = iconMap[item.icon] || Code2;
             return (
               <div 
